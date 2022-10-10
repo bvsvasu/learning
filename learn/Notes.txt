@@ -1,1 +1,2 @@
-Ranges
+Lists:
+Can store any datatype in the list. Can have a list inside a list.
