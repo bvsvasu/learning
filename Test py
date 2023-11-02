@@ -1,0 +1,19 @@
+from cryptography.fernet import Fernet
+
+# The encrypted string
+encrypted_string = b'...'
+
+# The private key used for decryption
+private_key = b'...'
+
+# Create a Fernet cipher using the private key
+cipher = Fernet(private_key)
+
+# Decrypt the string
+decrypted_string = cipher.decrypt(encrypted_string)
+
+# Convert the decrypted string from bytes to string format
+decrypted_string = decrypted_string.decode()
+
+# Print the decrypted string
+print(decrypted_string)
