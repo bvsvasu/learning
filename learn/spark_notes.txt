@@ -1,1 +1,9 @@
+1 action corresponds to 1 job is True. The caveat that gets missed here is that this is true in the RDD API
 
+Dataframe and Dataset API is a layer of abstraction on top of the RDD API to make your life easier. Sometimes, while calling an action it triggers several actions internally and you see multiple jobs
+
+An example would be reading a csv with header=True. When you call an action downstream, it would trigger another internal action that reads the first row of the csv to infer the header and you will see that show up as a job
+
+Another reason is adaptive query execution. spark.sql.adaptive.enabled set to True leads to spark using the stage statistics and deciding the subsequent physical plan based upon those statistics. This is useful in the cases like end users not having to worry about the skews in spark joins. However, This leads to spark breaking up the job into many jobs. You see these as skipped stages from previous jobs in your job DAGs. If you set spark.sql.adaptive.enabled to False, you will see all these jobs disappear. But, you almost always want to use adaptive query execution
+
+https://stackoverflow.com/questions/68522035/why-is-spark-creating-multiple-jobs-for-one-action
