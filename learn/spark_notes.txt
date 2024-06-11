@@ -7,3 +7,6 @@ An example would be reading a csv with header=True. When you call an action down
 Another reason is adaptive query execution. spark.sql.adaptive.enabled set to True leads to spark using the stage statistics and deciding the subsequent physical plan based upon those statistics. This is useful in the cases like end users not having to worry about the skews in spark joins. However, This leads to spark breaking up the job into many jobs. You see these as skipped stages from previous jobs in your job DAGs. If you set spark.sql.adaptive.enabled to False, you will see all these jobs disappear. But, you almost always want to use adaptive query execution
 
 https://stackoverflow.com/questions/68522035/why-is-spark-creating-multiple-jobs-for-one-action
+
+
+https://urlit.me/blog/pyspark-structured-streaming-read-from-kafka/
